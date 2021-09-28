@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +15,13 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/authors', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/book', [BookController::class, 'index']);
-Route::post('/book', [BookController::class, 'store']);
-Route::get('/book/{id}', [BookController::class, 'show']);
-Route::put('/book/{id}', [BookController::class, 'update']);
-Route::delete('/book/{id}', [BookController::class, 'destroy']);
-Route::resource('book', BookController::class)->except('edit', 'create');
+Route::get('/authors', [AuthorController::class, 'index']);
+Route::post('/authors', [AuthorController::class, 'store']);
+Route::get('/authors/{id}', [AuthorController::class, 'show']);
+Route::put('/authors/{id}', [AuthorController::class, 'update']);
+Route::delete('/authors/{id}', [AuthorController::class, 'destroy']);
+Route::resource('authors', AuthorController::class)->except('edit', 'create');
